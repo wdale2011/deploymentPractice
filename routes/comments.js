@@ -44,9 +44,9 @@ router.post("/", (req, res) => {
   // timestamp : moment()
   // id should be shortid
   const newComment = {
-    text: `${req.body.text}`,
-    id: `${shortId.generate()}`,
-    timestamp: `${moment().format()}`
+    text: req.body.text,
+    id: shortId.generate(),
+    timestamp: moment().format()
   };
   // add it to commentdata
   db.get("comments")
@@ -54,8 +54,8 @@ router.post("/", (req, res) => {
     .write();
   // return all the comments make sure the new comment is included
   res.status(201).json({
-    // msg: "Comment successfully added",
-    comments: db.get("comments").value
+    msg: "Comment successfully added",
+    comments: db.get("comments").value()
   });
   //Bonus:  if request has no body text (or empty) send proper error code and maybe a message
 });
