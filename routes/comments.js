@@ -54,7 +54,7 @@ router.post("/", (req, res) => {
     .write();
   // return all the comments make sure the new comment is included
   res.status(201).json({
-    msg: "Comment successfully added",
+    // msg: "Comment successfully added",
     comments: db.get("comments").value
   });
   //Bonus:  if request has no body text (or empty) send proper error code and maybe a message
