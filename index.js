@@ -5,12 +5,16 @@ const path = require("path");
 const logger = require("./middleware/logger");
 const commentData = require("./data");
 const commentsRouter = require("./routes/comments");
+const cors = require("cors");
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 /* setup middleware */
+
+//cors
+app.use(cors());
 
 // body parser middleware
 app.use(express.json());
