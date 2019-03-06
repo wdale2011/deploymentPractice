@@ -18,6 +18,16 @@ class MessageBoardApp extends React.Component {
       comments: commentdata
     };
   }
+
+  handleDelete = id => {
+    // Filter out the comments
+    const updatedComments = this.state.comments.filter(
+      comment => comment.id !== id
+    );
+    // set state
+    this.setState({ comments: updatedComments });
+  };
+
   render() {
     return (
       <div className="message-board-app">
@@ -27,7 +37,10 @@ class MessageBoardApp extends React.Component {
             <button type="submit">Search</button>
           </form>
         </nav>
-        <CommentList comments={this.state.comments} />
+        <CommentList
+          comments={this.state.comments}
+          onDelete={id => this.handleDelete(id)}
+        />
         <div className="add-comment">
           <form>
             <input type="text" name="comment" placeholder="Your opinion here" />

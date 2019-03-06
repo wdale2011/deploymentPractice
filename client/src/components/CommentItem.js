@@ -3,23 +3,24 @@ import "../css/CommentItem.css";
 
 class CommentItem extends React.Component {
   render() {
+    const { comment, onDeleteMe } = this.props;
     return (
       <div className="message-board-comment-item">
         <p>{this.props.comment.text}</p>
-        <button type="button" class="delete-button">
+        <button type="button" className="delete-button" onClick={onDeleteMe}>
           x
         </button>
-        <button type="button" class="edit-button">
+        <button type="button" className="edit-button">
           Edit
         </button>
         <input
           type="text"
-          class="hidden"
+          className="hidden"
           name={this.props.comment.id}
           value={this.props.comment.text}
         />
         <button
-          class="submit-button hidden"
+          className="submit-button hidden"
           name={this.props.comment.id}
           submit
         >
